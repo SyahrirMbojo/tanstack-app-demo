@@ -50,26 +50,30 @@ function HomePage() {
           </a>
         </div>
 
-        <div className="bg-white py-24 sm:py-32">
+        <div className="py-24 sm:py-32">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <dl className="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
               <div className="mx-auto flex max-w-xs flex-col gap-y-4">
-                <dt className="text-base/7 text-gray-600">Total User</dt>
-                <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+                <dt className="text-base/7 text-[var(--sea-ink-soft)] sm:text-lg">
+                  Total User
+                </dt>
+                <dd className="order-first text-3xl font-semibold tracking-tight text-[var(--sea-ink)] sm:text-5xl">
                   {counts.userCount}
                 </dd>
               </div>
               <div className="mx-auto flex max-w-xs flex-col gap-y-4">
-                <dt className="text-base/7 text-gray-600">Total Todo</dt>
-                <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+                <dt className="text-base/7 text-[var(--sea-ink-soft)] sm:text-lg">
+                  Total Todo
+                </dt>
+                <dd className="order-first text-3xl font-semibold tracking-tight text-[var(--sea-ink)] sm:text-5xl">
                   {counts.todosCount}
                 </dd>
               </div>
               <div className="mx-auto flex max-w-xs flex-col gap-y-4">
-                <dt className="text-base/7 text-gray-600">
+                <dt className="text-base/7 text-[var(--sea-ink-soft)] sm:text-lg">
                   New users annually
                 </dt>
-                <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+                <dd className="order-first text-3xl font-semibold tracking-tight text-[var(--sea-ink)] sm:text-5xl">
                   100
                 </dd>
               </div>
