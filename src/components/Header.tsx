@@ -53,6 +53,13 @@ export default function Header({ user }: HeaderProps) {
             About
           </Link>
           <Link
+            to="/contact"
+            className="nav-link"
+            activeProps={{ className: "nav-link is-active" }}
+          >
+            Contact
+          </Link>
+          <Link
             to="/todos"
             className="nav-link"
             activeProps={{ className: "nav-link is-active" }}

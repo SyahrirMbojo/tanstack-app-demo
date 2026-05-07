@@ -14,6 +14,7 @@ import { Route as UsersIndexRouteImport } from './routes/users/index'
 import { Route as TodosIndexRouteImport } from './routes/todos/index'
 import { Route as RegisterIndexRouteImport } from './routes/register/index'
 import { Route as LoginIndexRouteImport } from './routes/login/index'
+import { Route as ContactIndexRouteImport } from './routes/contact/index'
 import { Route as AboutIndexRouteImport } from './routes/about/index'
 import { Route as UsersCreateRouteImport } from './routes/users/create'
 import { Route as UsersUserIdEditRouteImport } from './routes/users/$userId/edit'
@@ -43,6 +44,11 @@ const LoginIndexRoute = LoginIndexRouteImport.update({
   path: '/login/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactIndexRoute = ContactIndexRouteImport.update({
+  id: '/contact/',
+  path: '/contact/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutIndexRoute = AboutIndexRouteImport.update({
   id: '/about/',
   path: '/about/',
@@ -63,6 +69,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/users/create': typeof UsersCreateRoute
   '/about/': typeof AboutIndexRoute
+  '/contact/': typeof ContactIndexRoute
   '/login/': typeof LoginIndexRoute
   '/register/': typeof RegisterIndexRoute
   '/todos/': typeof TodosIndexRoute
@@ -73,6 +80,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/users/create': typeof UsersCreateRoute
   '/about': typeof AboutIndexRoute
+  '/contact': typeof ContactIndexRoute
   '/login': typeof LoginIndexRoute
   '/register': typeof RegisterIndexRoute
   '/todos': typeof TodosIndexRoute
@@ -84,6 +92,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/users/create': typeof UsersCreateRoute
   '/about/': typeof AboutIndexRoute
+  '/contact/': typeof ContactIndexRoute
   '/login/': typeof LoginIndexRoute
   '/register/': typeof RegisterIndexRoute
   '/todos/': typeof TodosIndexRoute
@@ -96,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/users/create'
     | '/about/'
+    | '/contact/'
     | '/login/'
     | '/register/'
     | '/todos/'
@@ -106,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/users/create'
     | '/about'
+    | '/contact'
     | '/login'
     | '/register'
     | '/todos'
@@ -116,6 +127,7 @@ export interface FileRouteTypes {
     | '/'
     | '/users/create'
     | '/about/'
+    | '/contact/'
     | '/login/'
     | '/register/'
     | '/todos/'
@@ -127,6 +139,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   UsersCreateRoute: typeof UsersCreateRoute
   AboutIndexRoute: typeof AboutIndexRoute
+  ContactIndexRoute: typeof ContactIndexRoute
   LoginIndexRoute: typeof LoginIndexRoute
   RegisterIndexRoute: typeof RegisterIndexRoute
   TodosIndexRoute: typeof TodosIndexRoute
@@ -171,6 +184,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact/': {
+      id: '/contact/'
+      path: '/contact'
+      fullPath: '/contact/'
+      preLoaderRoute: typeof ContactIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about/': {
       id: '/about/'
       path: '/about'
@@ -199,6 +219,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   UsersCreateRoute: UsersCreateRoute,
   AboutIndexRoute: AboutIndexRoute,
+  ContactIndexRoute: ContactIndexRoute,
   LoginIndexRoute: LoginIndexRoute,
   RegisterIndexRoute: RegisterIndexRoute,
   TodosIndexRoute: TodosIndexRoute,
