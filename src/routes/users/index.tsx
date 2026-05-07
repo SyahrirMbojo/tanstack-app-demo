@@ -132,10 +132,10 @@ function UsersPage() {
 
           <Link
             to="/users/create"
-            className="inline-flex items-center justify-center gap-2 rounded-lg border border-[rgba(50,143,151,0.3)] bg-[var(--lagoon-deep)] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_12px_24px_rgba(50,143,151,0.18)] transition hover:-translate-y-0.5 hover:bg-[var(--palm)]"
+            className="inline-flex items-center justify-center gap-2 rounded-lg border border-[rgba(50,143,151,0.3)] bg-[var(--lagoon-deep)] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_12px_24px_rgba(50,143,151,0.18)] transition hover:-translate-y-0.5"
           >
-            <Plus className="h-4 w-4" aria-hidden="true" />
-            Add User
+            <Plus className="h-4 w-4 text-white" aria-hidden="true" />
+            <div className="text-white text-sm font-semibold">Add User</div>
           </Link>
         </div>
 
