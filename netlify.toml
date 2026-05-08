@@ -2,6 +2,9 @@
   command = "npm run build"
   publish = "dist/client"
 
+[build.environment]
+  NODE_ENV = "production"
+
 [functions]
   node_bundler = "esbuild"
 
