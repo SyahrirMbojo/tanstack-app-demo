@@ -3,7 +3,7 @@
   publish = "dist/client"
 
 [build.environment]
-  NODE_ENV = "production"
+  NODE_ENV = "development"
 
 [functions]
   node_bundler = "esbuild"
