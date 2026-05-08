@@ -1,5 +1,4 @@
 import { loginUser, type LoginInput } from "#/server/auth";
-import { checkAuthLogin } from "#/middleware";
 import {
   createFileRoute,
   useNavigate,
@@ -7,8 +6,7 @@ import {
 } from "@tanstack/react-router";
 import { useState } from "react";
 
-export const Route = createFileRoute("/login/")({
-  beforeLoad: async () => checkAuthLogin(),
+export const Route = createFileRoute("/_unauth/login/")({
   component: LoginPage,
 });
 
@@ -82,7 +80,7 @@ function LoginPage() {
                 value={formData.username}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                className="w-full px-4 py-2 border border-slate-600 rounded-lg placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 transition"
                 placeholder="Masukkan username"
               />
             </div>
@@ -98,7 +96,7 @@ function LoginPage() {
                 value={formData.password}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                className="w-full px-4 py-2 border border-slate-600 rounded-lg placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 transition"
                 placeholder="Masukkan password"
               />
             </div>
@@ -107,7 +105,7 @@ function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-2 mt-6 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 disabled:from-slate-600 disabled:to-slate-600 text-white font-semibold rounded-lg transition duration-200 transform"
+              className="w-full py-2 mt-6 bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-500 hover:to-cyan-500 disabled:from-slate-600 disabled:to-slate-600 text-white font-semibold rounded-lg transition duration-200 transform"
             >
               {loading ? "Loading..." : "Login"}
             </button>
@@ -122,7 +120,7 @@ function LoginPage() {
                 onClick={() => {
                   navigate({ to: "/register" });
                 }}
-                className="text-indigo-400 hover:text-indigo-300 font-semibold transition"
+                className="text-teal-400 hover:text-teal-300 font-semibold transition"
               >
                 Daftar di sini
               </button>

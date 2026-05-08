@@ -1,10 +1,8 @@
 import MainPage from "#/components/MainPage";
-import { checkMiddleware } from "#/middleware";
 import { createFileRoute } from "@tanstack/react-router";
 import MyCard from "./_components/-MyCard";
 
-export const Route = createFileRoute("/about/")({
-  beforeLoad: async () => checkMiddleware(),
+export const Route = createFileRoute("/_authenticated/about/")({
   component: RouteComponent,
 });
 

@@ -1,11 +1,10 @@
 import MainPage from "#/components/MainPage";
-import UserForm from "#/routes/users/components/-UserForm";
+import UserForm from "#/routes/_authenticated/users/_components/-UserForm";
 import {
   getUserRecord,
   updateUserRecord,
   type UserFormInput,
-} from "#/controllers/users";
-import { checkMiddleware } from "#/middleware";
+} from "#/routes/_authenticated/users/_server/-users";
 import {
   createFileRoute,
   notFound,
@@ -13,8 +12,7 @@ import {
   useRouter,
 } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/users/$userId/edit")({
-  beforeLoad: async () => checkMiddleware(),
+export const Route = createFileRoute("/_authenticated/users/$userId/edit")({
   loader: async ({ params }) => {
     const userId = Number(params.userId);
 

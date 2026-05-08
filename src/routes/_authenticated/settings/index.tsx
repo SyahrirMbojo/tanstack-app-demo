@@ -1,9 +1,9 @@
 import { createFileRoute, redirect } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/_authenticated/settings/")({
   beforeLoad: () => {
     throw redirect({
-      to: "/home",
+      to: "/settings/notification",
     });
   },
 });

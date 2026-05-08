@@ -10,7 +10,7 @@ export default function MainPage({
   desc?: string;
 }) {
   return (
-    <main className="page-wrap px-4 pb-8 pt-14">
+    <main className="w-full px-8 pb-8 pt-10">
       <section className="island-shell rise-in relative overflow-hidden rounded-[2rem] p-6 sm:p-8">
         <div className="pointer-events-none absolute -left-20 -top-24 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(79,184,178,0.32),transparent_66%)]" />
         <div className="pointer-events-none absolute -bottom-20 -right-20 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(47,106,74,0.18),transparent_66%)]" />

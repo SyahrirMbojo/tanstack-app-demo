@@ -1,5 +1,4 @@
 import { registerUser, type RegisterInput } from "#/server/auth";
-import { checkAuthLogin } from "#/middleware";
 import {
   createFileRoute,
   useNavigate,
@@ -7,8 +6,7 @@ import {
 } from "@tanstack/react-router";
 import { useState } from "react";
 
-export const Route = createFileRoute("/register/")({
-  beforeLoad: async () => checkAuthLogin(),
+export const Route = createFileRoute("/_unauth/register/")({
   component: RegisterPage,
 });
 
@@ -84,7 +82,7 @@ function RegisterPage() {
           {/* Form */}
           <form onSubmit={handleRegisterSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-slate-200 mb-2">
+              <label className="block text-sm font-medium mb-2">
                 Nama Lengkap
               </label>
               <input
@@ -93,14 +91,14 @@ function RegisterPage() {
                 value={formData.name}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                className="w-full px-4 py-2 border border-slate-600 rounded-lg placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 transition"
                 placeholder="Masukkan nama lengkap"
               />
             </div>
 
             {/* Email Field */}
             <div>
-              <label className="block text-sm font-medium text-slate-200 mb-2">
+              <label className="block text-sm font-medium mb-2">
                 Email (Opsional)
               </label>
               <input
@@ -108,21 +106,21 @@ function RegisterPage() {
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                className="w-full px-4 py-2 border border-slate-600 rounded-lg placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 transition"
                 placeholder="nama@example.com"
               />
             </div>
 
             {/* Gender Field */}
             <div>
-              <label className="block text-sm font-medium text-slate-200 mb-2">
+              <label className="block text-sm font-medium mb-2">
                 Jenis Kelamin (Opsional)
               </label>
               <select
                 name="gender"
                 value={formData.gender}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                className="w-full px-4 py-2 border border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 transition"
               >
                 <option value="">Pilih jenis kelamin</option>
                 <option value="male">Laki-laki</option>
@@ -133,7 +131,7 @@ function RegisterPage() {
 
             {/* Phone Field */}
             <div>
-              <label className="block text-sm font-medium text-slate-200 mb-2">
+              <label className="block text-sm font-medium mb-2">
                 Nomor Telepon (Opsional)
               </label>
               <input
@@ -141,14 +139,14 @@ function RegisterPage() {
                 name="phone"
                 value={formData.phone}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                className="w-full px-4 py-2 border border-slate-600 rounded-lg placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 transition"
                 placeholder="+62 xxx xxx xxxx"
               />
             </div>
 
             {/* Address Field */}
             <div>
-              <label className="block text-sm font-medium text-slate-200 mb-2">
+              <label className="block text-sm font-medium mb-2">
                 Alamat (Opsional)
               </label>
               <textarea
@@ -156,7 +154,7 @@ function RegisterPage() {
                 value={formData.address}
                 onChange={handleInputChange}
                 rows={2}
-                className="w-full px-4 py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition resize-none"
+                className="w-full px-4 py-2 border border-slate-600 rounded-lg placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 transition resize-none"
                 placeholder="Masukkan alamat"
               />
             </div>
@@ -171,7 +169,7 @@ function RegisterPage() {
                 value={formData.username}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                className="w-full px-4 py-2 border border-slate-600 rounded-lg placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 transition"
                 placeholder="Masukkan username"
               />
             </div>
@@ -187,14 +185,14 @@ function RegisterPage() {
                 value={formData.password}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                className="w-full px-4 py-2 border border-slate-600 rounded-lg placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 transition"
                 placeholder="Masukkan password"
               />
             </div>
 
             {/* Confirm Password Field */}
             <div>
-              <label className="block text-sm font-medium text-slate-200 mb-2">
+              <label className="block text-sm font-medium mb-2">
                 Konfirmasi Password
               </label>
               <input
@@ -203,7 +201,7 @@ function RegisterPage() {
                 value={formData.confirmPassword}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-2 bg-slate-700/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                className="w-full px-4 py-2 border border-slate-600 rounded-lg placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 transition"
                 placeholder="Konfirmasi password"
               />
             </div>
@@ -212,7 +210,7 @@ function RegisterPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-2 mt-6 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 disabled:from-slate-600 disabled:to-slate-600 text-white font-semibold rounded-lg transition duration-200 transform"
+              className="w-full py-2 mt-6 bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-500 hover:to-cyan-500 disabled:from-slate-600 disabled:to-slate-600 text-white font-semibold rounded-lg transition duration-200 transform"
             >
               {loading ? "Loading..." : "Register"}
             </button>
@@ -227,7 +225,7 @@ function RegisterPage() {
                 onClick={() => {
                   navigate({ to: "/login" });
                 }}
-                className="text-indigo-400 hover:text-indigo-300 font-semibold transition"
+                className="text-teal-400 hover:text-teal-300 font-semibold transition"
               >
                 Login di sini
               </button>

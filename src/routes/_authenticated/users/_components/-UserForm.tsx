@@ -1,4 +1,4 @@
-import type { UserFormInput } from "#/controllers/users";
+import type { UserFormInput } from "#/routes/_authenticated/users/_server/-users";
 import { ArrowLeft, Save } from "lucide-react";
 import { useState } from "react";
 
@@ -52,16 +52,6 @@ export default function UserForm({
             className="form-input"
           />
         </Field>
-        <Field label="Username">
-          <input
-            value={form.username}
-            onChange={(event) =>
-              setForm((prev) => ({ ...prev, username: event.target.value }))
-            }
-            required
-            className="form-input"
-          />
-        </Field>
         <Field label="Email">
           <input
             type="email"
@@ -69,6 +59,25 @@ export default function UserForm({
             onChange={(event) =>
               setForm((prev) => ({ ...prev, email: event.target.value }))
             }
+            className="form-input"
+          />
+        </Field>
+        <Field label="Phone">
+          <input
+            value={form.phone}
+            onChange={(event) =>
+              setForm((prev) => ({ ...prev, phone: event.target.value }))
+            }
+            className="form-input"
+          />
+        </Field>
+        <Field label="Username">
+          <input
+            value={form.username}
+            onChange={(event) =>
+              setForm((prev) => ({ ...prev, username: event.target.value }))
+            }
+            required
             className="form-input"
           />
         </Field>
@@ -81,20 +90,11 @@ export default function UserForm({
             required
             className="form-input"
           >
-            <option value="">Select gender</option>
+            <option value="">Pilih jenis kelamin</option>
             <option value="male">Laki-laki</option>
             <option value="female">Perempuan</option>
             <option value="other">Lainnya</option>
           </select>
-        </Field>
-        <Field label="Phone">
-          <input
-            value={form.phone}
-            onChange={(event) =>
-              setForm((prev) => ({ ...prev, phone: event.target.value }))
-            }
-            className="form-input"
-          />
         </Field>
         <Field label={mode === "edit" ? "New Password" : "Password"}>
           <input

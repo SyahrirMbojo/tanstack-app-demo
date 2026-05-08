@@ -1,7 +1,7 @@
 import MainPage from "#/components/MainPage";
 import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute("/contact/")({
+export const Route = createFileRoute("/_authenticated/contact/")({
   component: RouteComponent,
 });
 

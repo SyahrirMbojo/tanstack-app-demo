@@ -1,7 +1,9 @@
 import MainPage from "#/components/MainPage";
-import UserForm from "#/routes/users/components/-UserForm";
-import { createUserRecord, type UserFormInput } from "#/controllers/users";
-import { checkMiddleware } from "#/middleware";
+import UserForm from "#/routes/_authenticated/users/_components/-UserForm";
+import {
+  createUserRecord,
+  type UserFormInput,
+} from "#/routes/_authenticated/users/_server/-users";
 import {
   createFileRoute,
   useNavigate,
@@ -18,8 +20,7 @@ const EMPTY_FORM: UserFormInput = {
   password: "",
 };
 
-export const Route = createFileRoute("/users/create")({
-  beforeLoad: async () => checkMiddleware(),
+export const Route = createFileRoute("/_authenticated/users/create")({
   component: CreateUserPage,
 });
 

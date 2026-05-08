@@ -26,7 +26,7 @@ export default function Header({ user }: HeaderProps) {
 
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--line)] bg-[var(--header-bg)] px-4 backdrop-blur-lg">
-      <nav className="page-wrap flex flex-wrap items-center gap-x-3 gap-y-2 py-3 sm:py-4">
+      <nav className="w-full px-8 flex flex-wrap items-center gap-x-3 gap-y-2 py-3 sm:py-4">
         <h2 className="m-0 flex-shrink-0 text-base font-semibold tracking-tight">
           <Link
             to="/"
@@ -39,7 +39,7 @@ export default function Header({ user }: HeaderProps) {
 
         <div className="flex flex-1 w-full flex-wrap items-center gap-x-4 gap-y-1 pb-1 text-sm font-semibold sm:w-auto sm:flex-nowrap sm:pb-0">
           <Link
-            to="/"
+            to="/home"
             className="nav-link"
             activeProps={{ className: "nav-link is-active" }}
           >
@@ -61,6 +61,7 @@ export default function Header({ user }: HeaderProps) {
           </Link>
           <Link
             to="/todos"
+            search={{ page: 1, pageSize: 10, q: "" }}
             className="nav-link"
             activeProps={{ className: "nav-link is-active" }}
           >
@@ -73,6 +74,13 @@ export default function Header({ user }: HeaderProps) {
             activeProps={{ className: "nav-link is-active" }}
           >
             Users
+          </Link>
+          <Link
+            to="/settings"
+            className="nav-link"
+            activeProps={{ className: "nav-link is-active" }}
+          >
+            Settings
           </Link>
         </div>
 

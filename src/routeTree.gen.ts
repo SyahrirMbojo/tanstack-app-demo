@@ -9,146 +9,233 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as UnauthRouteImport } from './routes/_unauth'
+import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as UsersIndexRouteImport } from './routes/users/index'
-import { Route as TodosIndexRouteImport } from './routes/todos/index'
-import { Route as RegisterIndexRouteImport } from './routes/register/index'
-import { Route as LoginIndexRouteImport } from './routes/login/index'
-import { Route as ContactIndexRouteImport } from './routes/contact/index'
-import { Route as AboutIndexRouteImport } from './routes/about/index'
-import { Route as UsersCreateRouteImport } from './routes/users/create'
-import { Route as UsersUserIdEditRouteImport } from './routes/users/$userId/edit'
+import { Route as AuthenticatedSettingsRouteRouteImport } from './routes/_authenticated/settings/route'
+import { Route as UnauthRegisterIndexRouteImport } from './routes/_unauth/register/index'
+import { Route as UnauthLoginIndexRouteImport } from './routes/_unauth/login/index'
+import { Route as AuthenticatedUsersIndexRouteImport } from './routes/_authenticated/users/index'
+import { Route as AuthenticatedTodosIndexRouteImport } from './routes/_authenticated/todos/index'
+import { Route as AuthenticatedSettingsIndexRouteImport } from './routes/_authenticated/settings/index'
+import { Route as AuthenticatedHomeIndexRouteImport } from './routes/_authenticated/home/index'
+import { Route as AuthenticatedContactIndexRouteImport } from './routes/_authenticated/contact/index'
+import { Route as AuthenticatedAboutIndexRouteImport } from './routes/_authenticated/about/index'
+import { Route as AuthenticatedUsersCreateRouteImport } from './routes/_authenticated/users/create'
+import { Route as AuthenticatedSettingsProfileRouteImport } from './routes/_authenticated/settings/profile'
+import { Route as AuthenticatedSettingsNotificationRouteImport } from './routes/_authenticated/settings/notification'
+import { Route as AuthenticatedUsersUserIdEditRouteImport } from './routes/_authenticated/users/$userId/edit'
 
+const UnauthRoute = UnauthRouteImport.update({
+  id: '/_unauth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRoute = AuthenticatedRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const UsersIndexRoute = UsersIndexRouteImport.update({
-  id: '/users/',
-  path: '/users/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TodosIndexRoute = TodosIndexRouteImport.update({
-  id: '/todos/',
-  path: '/todos/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RegisterIndexRoute = RegisterIndexRouteImport.update({
+const AuthenticatedSettingsRouteRoute =
+  AuthenticatedSettingsRouteRouteImport.update({
+    id: '/settings',
+    path: '/settings',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const UnauthRegisterIndexRoute = UnauthRegisterIndexRouteImport.update({
   id: '/register/',
   path: '/register/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => UnauthRoute,
 } as any)
-const LoginIndexRoute = LoginIndexRouteImport.update({
+const UnauthLoginIndexRoute = UnauthLoginIndexRouteImport.update({
   id: '/login/',
   path: '/login/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => UnauthRoute,
 } as any)
-const ContactIndexRoute = ContactIndexRouteImport.update({
-  id: '/contact/',
-  path: '/contact/',
-  getParentRoute: () => rootRouteImport,
+const AuthenticatedUsersIndexRoute = AuthenticatedUsersIndexRouteImport.update({
+  id: '/users/',
+  path: '/users/',
+  getParentRoute: () => AuthenticatedRoute,
 } as any)
-const AboutIndexRoute = AboutIndexRouteImport.update({
+const AuthenticatedTodosIndexRoute = AuthenticatedTodosIndexRouteImport.update({
+  id: '/todos/',
+  path: '/todos/',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedSettingsIndexRoute =
+  AuthenticatedSettingsIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedSettingsRouteRoute,
+  } as any)
+const AuthenticatedHomeIndexRoute = AuthenticatedHomeIndexRouteImport.update({
+  id: '/home/',
+  path: '/home/',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedContactIndexRoute =
+  AuthenticatedContactIndexRouteImport.update({
+    id: '/contact/',
+    path: '/contact/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedAboutIndexRoute = AuthenticatedAboutIndexRouteImport.update({
   id: '/about/',
   path: '/about/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => AuthenticatedRoute,
 } as any)
-const UsersCreateRoute = UsersCreateRouteImport.update({
-  id: '/users/create',
-  path: '/users/create',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const UsersUserIdEditRoute = UsersUserIdEditRouteImport.update({
-  id: '/users/$userId/edit',
-  path: '/users/$userId/edit',
-  getParentRoute: () => rootRouteImport,
-} as any)
+const AuthenticatedUsersCreateRoute =
+  AuthenticatedUsersCreateRouteImport.update({
+    id: '/users/create',
+    path: '/users/create',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedSettingsProfileRoute =
+  AuthenticatedSettingsProfileRouteImport.update({
+    id: '/profile',
+    path: '/profile',
+    getParentRoute: () => AuthenticatedSettingsRouteRoute,
+  } as any)
+const AuthenticatedSettingsNotificationRoute =
+  AuthenticatedSettingsNotificationRouteImport.update({
+    id: '/notification',
+    path: '/notification',
+    getParentRoute: () => AuthenticatedSettingsRouteRoute,
+  } as any)
+const AuthenticatedUsersUserIdEditRoute =
+  AuthenticatedUsersUserIdEditRouteImport.update({
+    id: '/users/$userId/edit',
+    path: '/users/$userId/edit',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/users/create': typeof UsersCreateRoute
-  '/about/': typeof AboutIndexRoute
-  '/contact/': typeof ContactIndexRoute
-  '/login/': typeof LoginIndexRoute
-  '/register/': typeof RegisterIndexRoute
-  '/todos/': typeof TodosIndexRoute
-  '/users/': typeof UsersIndexRoute
-  '/users/$userId/edit': typeof UsersUserIdEditRoute
+  '/settings': typeof AuthenticatedSettingsRouteRouteWithChildren
+  '/settings/notification': typeof AuthenticatedSettingsNotificationRoute
+  '/settings/profile': typeof AuthenticatedSettingsProfileRoute
+  '/users/create': typeof AuthenticatedUsersCreateRoute
+  '/about/': typeof AuthenticatedAboutIndexRoute
+  '/contact/': typeof AuthenticatedContactIndexRoute
+  '/home/': typeof AuthenticatedHomeIndexRoute
+  '/settings/': typeof AuthenticatedSettingsIndexRoute
+  '/todos/': typeof AuthenticatedTodosIndexRoute
+  '/users/': typeof AuthenticatedUsersIndexRoute
+  '/login/': typeof UnauthLoginIndexRoute
+  '/register/': typeof UnauthRegisterIndexRoute
+  '/users/$userId/edit': typeof AuthenticatedUsersUserIdEditRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/users/create': typeof UsersCreateRoute
-  '/about': typeof AboutIndexRoute
-  '/contact': typeof ContactIndexRoute
-  '/login': typeof LoginIndexRoute
-  '/register': typeof RegisterIndexRoute
-  '/todos': typeof TodosIndexRoute
-  '/users': typeof UsersIndexRoute
-  '/users/$userId/edit': typeof UsersUserIdEditRoute
+  '/settings/notification': typeof AuthenticatedSettingsNotificationRoute
+  '/settings/profile': typeof AuthenticatedSettingsProfileRoute
+  '/users/create': typeof AuthenticatedUsersCreateRoute
+  '/about': typeof AuthenticatedAboutIndexRoute
+  '/contact': typeof AuthenticatedContactIndexRoute
+  '/home': typeof AuthenticatedHomeIndexRoute
+  '/settings': typeof AuthenticatedSettingsIndexRoute
+  '/todos': typeof AuthenticatedTodosIndexRoute
+  '/users': typeof AuthenticatedUsersIndexRoute
+  '/login': typeof UnauthLoginIndexRoute
+  '/register': typeof UnauthRegisterIndexRoute
+  '/users/$userId/edit': typeof AuthenticatedUsersUserIdEditRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/users/create': typeof UsersCreateRoute
-  '/about/': typeof AboutIndexRoute
-  '/contact/': typeof ContactIndexRoute
-  '/login/': typeof LoginIndexRoute
-  '/register/': typeof RegisterIndexRoute
-  '/todos/': typeof TodosIndexRoute
-  '/users/': typeof UsersIndexRoute
-  '/users/$userId/edit': typeof UsersUserIdEditRoute
+  '/_authenticated': typeof AuthenticatedRouteWithChildren
+  '/_unauth': typeof UnauthRouteWithChildren
+  '/_authenticated/settings': typeof AuthenticatedSettingsRouteRouteWithChildren
+  '/_authenticated/settings/notification': typeof AuthenticatedSettingsNotificationRoute
+  '/_authenticated/settings/profile': typeof AuthenticatedSettingsProfileRoute
+  '/_authenticated/users/create': typeof AuthenticatedUsersCreateRoute
+  '/_authenticated/about/': typeof AuthenticatedAboutIndexRoute
+  '/_authenticated/contact/': typeof AuthenticatedContactIndexRoute
+  '/_authenticated/home/': typeof AuthenticatedHomeIndexRoute
+  '/_authenticated/settings/': typeof AuthenticatedSettingsIndexRoute
+  '/_authenticated/todos/': typeof AuthenticatedTodosIndexRoute
+  '/_authenticated/users/': typeof AuthenticatedUsersIndexRoute
+  '/_unauth/login/': typeof UnauthLoginIndexRoute
+  '/_unauth/register/': typeof UnauthRegisterIndexRoute
+  '/_authenticated/users/$userId/edit': typeof AuthenticatedUsersUserIdEditRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/settings'
+    | '/settings/notification'
+    | '/settings/profile'
     | '/users/create'
     | '/about/'
     | '/contact/'
-    | '/login/'
-    | '/register/'
+    | '/home/'
+    | '/settings/'
     | '/todos/'
     | '/users/'
+    | '/login/'
+    | '/register/'
     | '/users/$userId/edit'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/settings/notification'
+    | '/settings/profile'
     | '/users/create'
     | '/about'
     | '/contact'
-    | '/login'
-    | '/register'
+    | '/home'
+    | '/settings'
     | '/todos'
     | '/users'
+    | '/login'
+    | '/register'
     | '/users/$userId/edit'
   id:
     | '__root__'
     | '/'
-    | '/users/create'
-    | '/about/'
-    | '/contact/'
-    | '/login/'
-    | '/register/'
-    | '/todos/'
-    | '/users/'
-    | '/users/$userId/edit'
+    | '/_authenticated'
+    | '/_unauth'
+    | '/_authenticated/settings'
+    | '/_authenticated/settings/notification'
+    | '/_authenticated/settings/profile'
+    | '/_authenticated/users/create'
+    | '/_authenticated/about/'
+    | '/_authenticated/contact/'
+    | '/_authenticated/home/'
+    | '/_authenticated/settings/'
+    | '/_authenticated/todos/'
+    | '/_authenticated/users/'
+    | '/_unauth/login/'
+    | '/_unauth/register/'
+    | '/_authenticated/users/$userId/edit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  UsersCreateRoute: typeof UsersCreateRoute
-  AboutIndexRoute: typeof AboutIndexRoute
-  ContactIndexRoute: typeof ContactIndexRoute
-  LoginIndexRoute: typeof LoginIndexRoute
-  RegisterIndexRoute: typeof RegisterIndexRoute
-  TodosIndexRoute: typeof TodosIndexRoute
-  UsersIndexRoute: typeof UsersIndexRoute
-  UsersUserIdEditRoute: typeof UsersUserIdEditRoute
+  AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
+  UnauthRoute: typeof UnauthRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/_unauth': {
+      id: '/_unauth'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof UnauthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -156,75 +243,162 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/users/': {
-      id: '/users/'
-      path: '/users'
-      fullPath: '/users/'
-      preLoaderRoute: typeof UsersIndexRouteImport
-      parentRoute: typeof rootRouteImport
+    '/_authenticated/settings': {
+      id: '/_authenticated/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof AuthenticatedSettingsRouteRouteImport
+      parentRoute: typeof AuthenticatedRoute
     }
-    '/todos/': {
-      id: '/todos/'
-      path: '/todos'
-      fullPath: '/todos/'
-      preLoaderRoute: typeof TodosIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/register/': {
-      id: '/register/'
+    '/_unauth/register/': {
+      id: '/_unauth/register/'
       path: '/register'
       fullPath: '/register/'
-      preLoaderRoute: typeof RegisterIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof UnauthRegisterIndexRouteImport
+      parentRoute: typeof UnauthRoute
     }
-    '/login/': {
-      id: '/login/'
+    '/_unauth/login/': {
+      id: '/_unauth/login/'
       path: '/login'
       fullPath: '/login/'
-      preLoaderRoute: typeof LoginIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof UnauthLoginIndexRouteImport
+      parentRoute: typeof UnauthRoute
     }
-    '/contact/': {
-      id: '/contact/'
+    '/_authenticated/users/': {
+      id: '/_authenticated/users/'
+      path: '/users'
+      fullPath: '/users/'
+      preLoaderRoute: typeof AuthenticatedUsersIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/todos/': {
+      id: '/_authenticated/todos/'
+      path: '/todos'
+      fullPath: '/todos/'
+      preLoaderRoute: typeof AuthenticatedTodosIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/settings/': {
+      id: '/_authenticated/settings/'
+      path: '/'
+      fullPath: '/settings/'
+      preLoaderRoute: typeof AuthenticatedSettingsIndexRouteImport
+      parentRoute: typeof AuthenticatedSettingsRouteRoute
+    }
+    '/_authenticated/home/': {
+      id: '/_authenticated/home/'
+      path: '/home'
+      fullPath: '/home/'
+      preLoaderRoute: typeof AuthenticatedHomeIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/contact/': {
+      id: '/_authenticated/contact/'
       path: '/contact'
       fullPath: '/contact/'
-      preLoaderRoute: typeof ContactIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedContactIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
     }
-    '/about/': {
-      id: '/about/'
+    '/_authenticated/about/': {
+      id: '/_authenticated/about/'
       path: '/about'
       fullPath: '/about/'
-      preLoaderRoute: typeof AboutIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedAboutIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
     }
-    '/users/create': {
-      id: '/users/create'
+    '/_authenticated/users/create': {
+      id: '/_authenticated/users/create'
       path: '/users/create'
       fullPath: '/users/create'
-      preLoaderRoute: typeof UsersCreateRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedUsersCreateRouteImport
+      parentRoute: typeof AuthenticatedRoute
     }
-    '/users/$userId/edit': {
-      id: '/users/$userId/edit'
+    '/_authenticated/settings/profile': {
+      id: '/_authenticated/settings/profile'
+      path: '/profile'
+      fullPath: '/settings/profile'
+      preLoaderRoute: typeof AuthenticatedSettingsProfileRouteImport
+      parentRoute: typeof AuthenticatedSettingsRouteRoute
+    }
+    '/_authenticated/settings/notification': {
+      id: '/_authenticated/settings/notification'
+      path: '/notification'
+      fullPath: '/settings/notification'
+      preLoaderRoute: typeof AuthenticatedSettingsNotificationRouteImport
+      parentRoute: typeof AuthenticatedSettingsRouteRoute
+    }
+    '/_authenticated/users/$userId/edit': {
+      id: '/_authenticated/users/$userId/edit'
       path: '/users/$userId/edit'
       fullPath: '/users/$userId/edit'
-      preLoaderRoute: typeof UsersUserIdEditRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedUsersUserIdEditRouteImport
+      parentRoute: typeof AuthenticatedRoute
     }
   }
 }
 
+interface AuthenticatedSettingsRouteRouteChildren {
+  AuthenticatedSettingsNotificationRoute: typeof AuthenticatedSettingsNotificationRoute
+  AuthenticatedSettingsProfileRoute: typeof AuthenticatedSettingsProfileRoute
+  AuthenticatedSettingsIndexRoute: typeof AuthenticatedSettingsIndexRoute
+}
+
+const AuthenticatedSettingsRouteRouteChildren: AuthenticatedSettingsRouteRouteChildren =
+  {
+    AuthenticatedSettingsNotificationRoute:
+      AuthenticatedSettingsNotificationRoute,
+    AuthenticatedSettingsProfileRoute: AuthenticatedSettingsProfileRoute,
+    AuthenticatedSettingsIndexRoute: AuthenticatedSettingsIndexRoute,
+  }
+
+const AuthenticatedSettingsRouteRouteWithChildren =
+  AuthenticatedSettingsRouteRoute._addFileChildren(
+    AuthenticatedSettingsRouteRouteChildren,
+  )
+
+interface AuthenticatedRouteChildren {
+  AuthenticatedSettingsRouteRoute: typeof AuthenticatedSettingsRouteRouteWithChildren
+  AuthenticatedUsersCreateRoute: typeof AuthenticatedUsersCreateRoute
+  AuthenticatedAboutIndexRoute: typeof AuthenticatedAboutIndexRoute
+  AuthenticatedContactIndexRoute: typeof AuthenticatedContactIndexRoute
+  AuthenticatedHomeIndexRoute: typeof AuthenticatedHomeIndexRoute
+  AuthenticatedTodosIndexRoute: typeof AuthenticatedTodosIndexRoute
+  AuthenticatedUsersIndexRoute: typeof AuthenticatedUsersIndexRoute
+  AuthenticatedUsersUserIdEditRoute: typeof AuthenticatedUsersUserIdEditRoute
+}
+
+const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
+  AuthenticatedSettingsRouteRoute: AuthenticatedSettingsRouteRouteWithChildren,
+  AuthenticatedUsersCreateRoute: AuthenticatedUsersCreateRoute,
+  AuthenticatedAboutIndexRoute: AuthenticatedAboutIndexRoute,
+  AuthenticatedContactIndexRoute: AuthenticatedContactIndexRoute,
+  AuthenticatedHomeIndexRoute: AuthenticatedHomeIndexRoute,
+  AuthenticatedTodosIndexRoute: AuthenticatedTodosIndexRoute,
+  AuthenticatedUsersIndexRoute: AuthenticatedUsersIndexRoute,
+  AuthenticatedUsersUserIdEditRoute: AuthenticatedUsersUserIdEditRoute,
+}
+
+const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
+  AuthenticatedRouteChildren,
+)
+
+interface UnauthRouteChildren {
+  UnauthLoginIndexRoute: typeof UnauthLoginIndexRoute
+  UnauthRegisterIndexRoute: typeof UnauthRegisterIndexRoute
+}
+
+const UnauthRouteChildren: UnauthRouteChildren = {
+  UnauthLoginIndexRoute: UnauthLoginIndexRoute,
+  UnauthRegisterIndexRoute: UnauthRegisterIndexRoute,
+}
+
+const UnauthRouteWithChildren =
+  UnauthRoute._addFileChildren(UnauthRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  UsersCreateRoute: UsersCreateRoute,
-  AboutIndexRoute: AboutIndexRoute,
-  ContactIndexRoute: ContactIndexRoute,
-  LoginIndexRoute: LoginIndexRoute,
-  RegisterIndexRoute: RegisterIndexRoute,
-  TodosIndexRoute: TodosIndexRoute,
-  UsersIndexRoute: UsersIndexRoute,
-  UsersUserIdEditRoute: UsersUserIdEditRoute,
+  AuthenticatedRoute: AuthenticatedRouteWithChildren,
+  UnauthRoute: UnauthRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
