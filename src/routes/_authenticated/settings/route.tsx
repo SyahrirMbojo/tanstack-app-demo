@@ -8,7 +8,7 @@ function RouteComponent() {
   return (
     <div className="w-full px-10 mx-auto">
       <div className="border-b border-gray-200">
-        <nav className="flex gap-6 border-b border-gray-200">
+        <nav className="flex gap-6 border-b border-[var(--line)]">
           <Link
             to="/settings/notification"
             activeProps={{
