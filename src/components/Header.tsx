@@ -1,4 +1,4 @@
-import { Link, useRouter } from "@tanstack/react-router";
+import { Link, useNavigate, useRouter } from "@tanstack/react-router";
 import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 import { logoutUser, type AuthUser } from "#/server/auth";
@@ -9,16 +9,30 @@ type HeaderProps = {
 
 export default function Header({ user }: HeaderProps) {
   const router = useRouter();
+  const navigate = useNavigate();
   const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   const handleLogout = async () => {
+    if (isLoggingOut) {
+      return;
+    }
+
     setIsLoggingOut(true);
+    let sessionCleared = false;
+
     try {
       await logoutUser();
-      await router.invalidate();
-      router.navigate({ to: "/login" });
+      sessionCleared = true;
+
+      router.clearCache();
+      await navigate({ to: "/login", replace: true });
+      await router.invalidate({ sync: true });
     } catch (error) {
       console.error("Logout failed:", error);
+
+      if (sessionCleared) {
+        window.location.assign("/login");
+      }
     } finally {
       setIsLoggingOut(false);
     }
@@ -29,7 +43,7 @@ export default function Header({ user }: HeaderProps) {
       <nav className="w-full px-8 flex flex-wrap items-center gap-x-3 gap-y-2 py-3 sm:py-4">
         <h2 className="m-0 flex-shrink-0 text-base font-semibold tracking-tight">
           <Link
-            to="/"
+            to="/home"
             className="inline-flex items-center gap-2 rounded-full border border-[var(--chip-line)] bg-[var(--chip-bg)] px-3 py-1.5 text-sm text-[var(--sea-ink)] no-underline shadow-[0_8px_24px_rgba(30,90,72,0.08)] sm:px-4 sm:py-2"
           >
             <span className="h-2 w-2 rounded-full bg-[linear-gradient(90deg,#56c6be,#7ed3bf)]" />
@@ -76,7 +90,7 @@ export default function Header({ user }: HeaderProps) {
             Users
           </Link>
           <Link
-            to="/settings"
+            to="/settings/notification"
             className="nav-link"
             activeProps={{ className: "nav-link is-active" }}
           >
@@ -123,6 +137,7 @@ export default function Header({ user }: HeaderProps) {
                 {user.name}
               </span>
               <button
+                type="button"
                 onClick={handleLogout}
                 disabled={isLoggingOut}
                 className="rounded-full border border-[rgba(50,143,151,0.3)] bg-[rgba(79,184,178,0.14)] px-4 py-2 text-sm font-semibold text-[var(--lagoon-deep)] transition hover:-translate-y-0.5 hover:bg-[rgba(79,184,178,0.24)] disabled:opacity-50"
